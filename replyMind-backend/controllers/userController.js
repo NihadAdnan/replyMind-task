@@ -34,7 +34,20 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    res.status(200).json({ message: 'Login successful', userId: user._id });
+    res.status(200).json({ message: 'Login successful', userId: user._id }); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+export const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -42,10 +55,14 @@ export const loginUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { userId, profession, interests, bio } = req.body;
+  const { profession, interests, bio } = req.body;
 
   try {
-    const user = await User.findByIdAndUpdate(userId, { profession, interests, bio }, { new: true, runValidators: true });
+    const user = await User.findByIdAndUpdate(
+      req.params.id, 
+      { profession, interests, bio },
+      { new: true, runValidators: true }
+    );
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -58,10 +75,8 @@ export const updateUser = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  const { userId } = req.body;
-
   try {
-    const user = await User.findByIdAndDelete(userId);
+    const user = await User.findByIdAndDelete(req.params.id); 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }

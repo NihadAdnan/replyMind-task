@@ -11,9 +11,10 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const user = { username, password };
-      await axios.post('http://localhost:5000/api/users/login', user);
+      const response = await axios.post('http://localhost:5000/api/users/login', user);
+      const userId = response.data.userId; 
       alert('User logged in successfully');
-      navigate('/profile');
+      navigate(`/profile/${userId}`);
     } catch (error) {
       console.error('Login error:', error);
       alert('Login failed');

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Profile.css';
 
 const Profile = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http:localhost:5000/api/users/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/users/${id}`);
         setUser(response.data);
       } catch (error) {
         console.error(error);
@@ -22,7 +23,7 @@ const Profile = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http:localhost:5000/api/users/${id}`, user);
+      await axios.put(`http://localhost:5000/api/users/${id}`, user);
       alert('Profile updated');
     } catch (error) {
       console.error(error);
@@ -32,9 +33,9 @@ const Profile = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http:localhost:5000/api/users/${id}`);
+      await axios.delete(`http://localhost:5000/api/users/${id}`);
       alert('Profile deleted');
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error(error);
       alert('Delete failed');
@@ -44,7 +45,7 @@ const Profile = () => {
   if (!user) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="container">
       <h2>Profile</h2>
       <div>
         <label>Username:</label>
