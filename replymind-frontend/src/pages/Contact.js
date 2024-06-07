@@ -1,12 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react';
+import './Contact.css';
 
-const Contact=()=> {
+const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thank you, ${name}. Your message has been received!`);
+  };
+
   return (
-    <div>
-        <h1>About ReplyMind</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo laborum voluptatem aut id labore deserunt temporibus voluptatum pariatur accusamus, quasi eos at minus inventore, totam natus porro cupiditate, dolorum odit minima dolores illum ea impedit ratione? Tempora repellat eum deleniti quis assumenda possimus, sapiente velit eveniet, laborum repellendus quae iste recusandae sed temporibus tenetur fugiat eos ipsum asperiores itaque necessitatibus commodi voluptatum autem expedita? Labore quibusdam cum molestias earum enim velit veritatis, blanditiis, saepe id asperiores at! Blanditiis deserunt distinctio illum commodi quae laudantium nisi, nihil impedit quasi? Laudantium temporibus, asperiores excepturi, ut numquam dolorum eveniet placeat nostrum et nobis alias voluptas harum eos qui perspiciatis. Ipsum iusto iste rem corrupti praesentium amet quaerat recusandae quae vero placeat? Eaque, voluptatum atque tenetur ducimus sed magni quisquam placeat facere excepturi saepe aliquid libero dolores dolorum dolore illum recusandae odio, iste officiis cum voluptates unde porro! Eum eius sapiente qui quia perspiciatis quisquam, optio maxime excepturi adipisci illum! Illo dolorum natus incidunt ipsa dolor, porro, minima accusantium maiores nostrum suscipit obcaecati iure nulla consequatur sequi quo non rerum consectetur eius? Amet ea sit nobis eum velit adipisci expedita delectus quaerat, tempore quam veritatis placeat molestiae tempora impedit harum nemo eaque est!</p>
+    <div className="contact-container">
+      <h1 className="contact-title">Contact ReplyMind</h1>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="message">Message:</label>
+          <textarea
+            id="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <button type="submit" className="submit-button">Submit</button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

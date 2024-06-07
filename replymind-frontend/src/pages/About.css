@@ -1,0 +1,39 @@
+.about-container {
+    max-width: 600px;
+    margin: 200px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .about-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2F3A32;
+  }
+  
+  .about-text {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    color: #555;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .about-title {
+      font-size: 28px;
+    }
+  
+    .about-text {
+      font-size: 16px;
+    }
+  }

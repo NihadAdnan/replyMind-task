@@ -22,9 +22,14 @@ const Profile = () => {
   }, [id]);
 
   const handleUpdate = async () => {
+    if (user.bio.split(' ').length > 50) {
+      alert('Bio should be at most 50 words.');
+      return;
+    }
+
     try {
       await axios.put(`http://localhost:5000/api/users/${id}`, user);
-      alert('Profile updated');
+      alert('Profile updated! Check updated data in the database please');
     } catch (error) {
       console.error(error);
       alert('Update failed');
@@ -40,6 +45,12 @@ const Profile = () => {
       console.error(error);
       alert('Delete failed');
     }
+  };
+
+  const handleInterestsChange = (e) => {
+    const selectedInterests = [...e.target.selectedOptions].map(o => o.value);
+    setUser({ ...user, interests: selectedInterests });
+    alert('Interests have been selected');
   };
 
   if (!user) return <div>Loading...</div>;
@@ -71,7 +82,7 @@ const Profile = () => {
         <select
           multiple
           value={user.interests}
-          onChange={(e) => setUser({ ...user, interests: [...e.target.selectedOptions].map(o => o.value) })}
+          onChange={handleInterestsChange}
         >
           {user.profession === 'Marketing Professional' && (
             <>

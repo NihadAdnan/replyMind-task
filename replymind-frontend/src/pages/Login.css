@@ -6,10 +6,11 @@ body {
 }
 
 .login-container {
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  background-color: #fff;
+  max-width: 600px;
+  margin: 200px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -20,22 +21,24 @@ h2 {
 
 .login-input {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .login-button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 15px;
+  margin-top: 20px;
   border: none;
   border-radius: 5px;
   color: #fff;
   background-color: #007bff;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .login-button:hover {
@@ -43,12 +46,14 @@ h2 {
 }
 
 .register-link-container {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .register-link {
-  color: #007bff;
+  color: #2F3A32;
   text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .register-link:hover {

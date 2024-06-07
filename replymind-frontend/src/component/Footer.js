@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <p>&copy; 2024 Nihad Adnan Shah. All rights reserved.</p>
+        <p className="copy-right">&copy; 2024 Nihad Adnan Shah  |  All rights reserved</p>
         <nav className="footer-links">
           <Link to="/about" className="footer-item">About</Link>
           <Link to="/contact" className="footer-item">Contact</Link>

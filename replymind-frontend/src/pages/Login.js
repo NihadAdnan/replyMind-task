@@ -40,7 +40,7 @@ const Login = () => {
       />
       <button className="login-button" onClick={handleLogin}>Login</button>
       <div className="register-link-container">
-        <p>Don't have an account? <Link to="/register" className="register-link">Register please</Link></p>
+        <p>Don't have an account? <Link to="/register" className="register-link">Register Here!</Link></p>
       </div>
     </div>
   );
